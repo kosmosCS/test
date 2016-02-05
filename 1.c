@@ -34,9 +34,9 @@ int main(int argc, char **argv) {
     int pfd[2];
     char flag = 0, flag2 = 0;
     int fd;
-    if((fd= open("result.out", O_RDWR | O_CREAT | O_TRUNC,0777)) == -1) {
+    if((fd= open("result.out", O_WRONLY | O_CREAT | O_TRUNC,0777)) == -1) {
         chmod("result.out", S_IRWXU);
-        fd= open("result.out", O_RDWR | O_CREAT | O_TRUNC,0777);
+        fd= open("result.out", O_WRONLY | O_CREAT | O_TRUNC,0777);
 //        printf("protected\n");
 //        return 1;
     }

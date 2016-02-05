@@ -25,16 +25,17 @@ int main(int argv, char **argc) {
     do {
         key = ftok(M_PATH,1);
     }while(key == -1);
-    
-    semID = semget(key, 16, O_CREAT | 0660);
-    
+   
+    semID = semget(key, 16, 0660 | IPC_CREAT);
+    printf("key=%d\tsemID=%d\n", key, semID);
+
     for(i = 0; i < 16; i++) {
         sops[i].sem_num = i;
         sops[i].sem_op = i;
         sops[i].sem_flg = 0;
     }
     semop(semID, sops, 16);
-
+    perror("Errno after semop: ");
     while(1);
 
 }
