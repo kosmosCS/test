@@ -17,7 +17,7 @@ int main(int argv, char **argc) {
     int i;
     int shmId;
     struct region{
-        int len;
+//        int len;
         char buf[MAX_LEN];
     };
 
@@ -35,7 +35,7 @@ int main(int argv, char **argc) {
     rptr = mmap(NULL, sizeof(struct region),
             PROT_WRITE, MAP_SHARED, shmId, 0);
     if(rptr == MAP_FAILED) perror("mmap error: ");
-    printf("Len - %d\n", rptr->len);
+  //  printf("Len - %d\n", rptr->len);
     
     pShmData = rptr->buf;
     for(i = 0; i < MAX_LEN; i++)
